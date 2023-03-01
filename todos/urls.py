@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import (
     create_todo_list,
-    todo_list_detail,
+    delete_todo_list,
+    detail_todo_list,
     todo_list,
     update_todo_list,
 )
@@ -9,7 +10,8 @@ from .views import (
 
 urlpatterns = [
     path("", todo_list, name="todo_list_list"),
-    path("<int:id>/", todo_list_detail, name="todo_list_detail"),
+    path("<int:id>/", detail_todo_list, name="todo_list_detail"),
     path("create/", create_todo_list, name="todo_list_create"),
     path("<int:id>/edit/", update_todo_list, name="todo_list_update"),
+    path("<int:id>/delete/", delete_todo_list, name="todo_list_delete"),
 ]
