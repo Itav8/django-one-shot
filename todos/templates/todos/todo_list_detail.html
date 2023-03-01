@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo Lists</title>
+    <title>Document</title>
 </head>
 <body>
     <main>
         <div>
-            <h1>My Lists</h1>
+            <h1>{{ task_list.name }}</h1>
+            <h2>Tasks</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Number of items</th>
+                        <th>Task</th>
+                        <th>Due date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for list in todo_list.all %}
+                    {% for item in task_list.items.all %}
                     <tr>
-                        <td><a href="{% url 'todo_list_detail' list.id %}">{{ list.name }}</a></td>
-                        <td>{{ todo_list|length }}</td>
+                        <td><a href="{% url 'todo_list_list' %}">{{ item.task }}</a></td>
+                        <td>{{ item.due_date }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
