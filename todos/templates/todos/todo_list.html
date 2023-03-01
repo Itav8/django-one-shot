@@ -21,7 +21,7 @@
                     {% for list in todo_list.all %}
                     <tr>
                         <td><a href="{% url 'todo_list_detail' list.id %}">{{ list.name }}</a></td>
-                        <td>{{ todo_list|length }}</td>
+                        <td>{{ list.items.all.count }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
