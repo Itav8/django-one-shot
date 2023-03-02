@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
+    <title>Document</title>
 </head>
 <body>
     <main>
         <div>
-            <h1>Create a new item</h1>
+            <h1>Update item</h1>
             <form method="post">
                 {% csrf_token %}
                 {% comment %} <label for="task">Task:</label>
@@ -31,7 +31,7 @@
                     {% endfor %}
                 </select> {% endcomment %}
                 {{ form.as_p }}
-                <button>Create</button>
+                <button>Update</button>
             </form>
         </div>
     </main>

@@ -61,8 +61,6 @@ def delete_todo_list(request, id):
 
 
 def create_todo_item(request):
-    todos_list = TodoList.objects.all()
-
     if request.method == "POST":
         form = TodoItemForm(request.POST)
 
@@ -73,6 +71,22 @@ def create_todo_item(request):
     else:
         form = TodoItemForm()
 
-    context = {"form": form, "todos_list": todos_list}
+    context = {"form": form}
 
     return render(request, "todos/todo_item_create.html", context)
+
+
+def update_todo_item(request, id):
+    todo_item = TodoItem.objects.get(id=id)
+
+    if request.method == "POST":
+        form = TodoItemForm(request.POST, instance=todo_item)
+
+        if form.is_valid():
+            todo_item = form.save()
+            return redirect("todo_list_detail", id=todo_item.list.id)
+    else:
+        form = TodoItemForm(instance=todo_item)
+
+    context = {"form": form}
+    return render(request, "todos/todo_item_update.html", context)
